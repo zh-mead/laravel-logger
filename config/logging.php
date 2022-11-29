@@ -44,4 +44,11 @@ return [
         'connection' => env('LOG_REQUEST_CONNECTION', config('queue.default')), // queue connection
         'queue' => env('LOG_REQUEST_QUEUE', 'default'), // queue name
     ],
+
+    'listener' => [
+        'requestArrivedListener' => \ZhMead\Logger\Laravel\Listeners\RequestArrivedListener::class,
+        'requestHandledListener' => \ZhMead\Logger\Laravel\Listeners\RequestHandledListener::class,
+    ],
+
+    'job' => \ZhMead\Logger\Laravel\Jobs\LogJob::class,
 ];
