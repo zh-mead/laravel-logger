@@ -1,0 +1,23 @@
+{
+    "name": "zh-mead\/laraval-logger",
+    "description": "Package description here.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mead",
+            "email": "751066209@qq.com"
+        }
+    ],
+    "require": {
+        "ext-json": "*",
+        "jiannei/helpers": "^0.2.1"
+    },
+    "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
+        "psr-4": {
+            "ZhMead\\LaravalLogger\\": "src"
+        }
+    }
+}
