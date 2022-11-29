@@ -17,7 +17,7 @@
             "src/helpers.php"
         ],
         "psr-4": {
-            "ZhMead\\LaravalLogger\\": "src"
+            "ZhMead\\Logger\\Laraval\\": "src"
         }
     }
 }
