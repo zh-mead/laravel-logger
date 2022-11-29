@@ -6,7 +6,7 @@
 ## Installing
 
 ```shell
-$ composer require zh_mead/laraval-logger -vvv
+$ composer require zh-mead/laraval-logger -vvv
 ```
 
 ## Usage
