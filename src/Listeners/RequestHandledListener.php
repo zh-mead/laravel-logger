@@ -39,7 +39,7 @@ class RequestHandledListener
             'end' => $end,
             'duration' => format_duration($end - $start),
         ];
-        Log::error('RequestHandledEvent：' . php2js($context));
+
         logger_async(\config('logging.request.message'), $context)
             ->onConnection(\config('logging.request.connection'))
             ->onQueue(\config('logging.request.queue'));

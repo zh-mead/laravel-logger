@@ -67,11 +67,9 @@ class LoggerServiceProvider extends IlluminateServiceProvider
             return;
         }
 
-        $requestArrivedListener = $this->app['config']->get('logging.listener.requestArrivedListener');
-        $requestHandledListener = $this->app['config']->get('logging.listener.requestHandledListener');
+        $requestArrivedListener = $this->app['config']->get('logging.listener.requestArrivedListener', RequestArrivedListener::class);
+        $requestHandledListener = $this->app['config']->get('logging.listener.requestHandledListener', RequestArrivedListener::class);
         $this->app['events']->listen(RequestArrivedEvent::class, $requestArrivedListener);
         $this->app['events']->listen(RequestHandledEvent::class, $requestHandledListener);
-//        $this->app['events']->listen(RequestArrivedEvent::class, RequestArrivedListener::class);
-//        $this->app['events']->listen(RequestHandledEvent::class, RequestHandledListener::class);
     }
 }

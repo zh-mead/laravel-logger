@@ -19,8 +19,7 @@ if (!function_exists('logger_async')) {
      */
     function logger_async(string $message, array $context = [])
     {
-        $job = config('logging.job');
+        $job = config('logging.job', \ZhMead\Logger\Laravel\Jobs\LogJob::class);
         return dispatch(new $job($message, $context, request()->server()));
-//        return dispatch(new \ZhMead\Logger\Laravel\Jobs\LogJob($message, $context, request()->server()));
     }
 }
