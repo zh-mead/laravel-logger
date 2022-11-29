@@ -48,7 +48,7 @@ class RequestHandledListener
             'start' => $start,
             'end' => $end,
             'duration' => format_duration($end - $start),
-            'user' => $user ? $user : null,
+            'user' => $user ?? null,
         ];
 
         logger_async(\config('logging.request.message'), $context)
