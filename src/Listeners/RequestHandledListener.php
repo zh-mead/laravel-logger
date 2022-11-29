@@ -11,6 +11,7 @@
 
 namespace ZhMead\Logger\Laravel\Listeners;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use ZhMead\Logger\Laravel\Events\RequestHandledEvent;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
@@ -31,13 +32,14 @@ class RequestHandledListener
                 ];
             }
         }
-
+        $guard = config('logging.guard', false);
         $context = [
             'request' => $request,
             'response' => $event->response instanceof SymfonyResponse ? json_decode($event->response->getContent(), true) : (string)$event->response,
             'start' => $start,
             'end' => $end,
             'duration' => format_duration($end - $start),
+            'user' => $guard ? auth($guard)->user() : null,
         ];
 
         logger_async(\config('logging.request.message'), $context)
