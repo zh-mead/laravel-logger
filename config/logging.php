@@ -51,4 +51,6 @@ return [
     ],
 
     'job' => \ZhMead\Logger\Laravel\Jobs\LogJob::class,
+
+    'guard' => false,
 ];

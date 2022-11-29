@@ -33,13 +33,22 @@ class RequestHandledListener
             }
         }
         $guard = config('logging.guard', false);
+        $user = false;
+        if ($guard) {
+            $user = auth($guard)->user();
+            $user = [
+                'id' => $user['id'],
+                'name' => $user['name'],
+                'username' => $user['username'],
+            ];
+        }
         $context = [
             'request' => $request,
             'response' => $event->response instanceof SymfonyResponse ? json_decode($event->response->getContent(), true) : (string)$event->response,
             'start' => $start,
             'end' => $end,
             'duration' => format_duration($end - $start),
-            'user' => $guard ? auth($guard)->user() : null,
+            'user' => $user ? $user : null,
         ];
 
         logger_async(\config('logging.request.message'), $context)
