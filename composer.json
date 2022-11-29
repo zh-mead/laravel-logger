@@ -1,5 +1,5 @@
 {
-    "name": "zh-mead\/laraval-logger",
+    "name": "zh-mead\/laravel-logger",
     "description": "Package description here.",
     "license": "MIT",
     "authors": [
@@ -17,7 +17,7 @@
             "src/helpers.php"
         ],
         "psr-4": {
-            "ZhMead\\Logger\\Laraval\\": "src"
+            "ZhMead\\Logger\\Laravel\\": "src"
         }
     }
 }
