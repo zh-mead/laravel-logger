@@ -36,11 +36,13 @@ class RequestHandledListener
         $user = false;
         if ($guard) {
             $user = auth($guard)->user();
-            $user = [
-                'id' => $user['id'],
-                'name' => $user['name'],
-                'username' => $user['username'],
-            ];
+            if ($user) {
+                $user = [
+                    'id' => $user['id'],
+                    'name' => $user['name'],
+                    'username' => $user['username'],
+                ];
+            }
         }
         $context = [
             'request' => $request,
